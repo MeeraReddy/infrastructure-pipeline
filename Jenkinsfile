@@ -20,5 +20,8 @@ node('linux') {
         
     }
     
-    
+    stage ("superTask") {
+
+      def output = sh returnStdout: true, script: 'aws ec2 describe-instances | jq .'
+    }
 }
