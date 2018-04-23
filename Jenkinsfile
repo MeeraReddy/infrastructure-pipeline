@@ -16,6 +16,7 @@ node('linux') {
     // Create EC2 instances
     stage ("CreateInstance") {
     
+      sh "aws ec2 run-instances --image-id ami-467ca739 --count 1 --instance-type t2.micro --key-name MeeraKeyPair --security-group-ids sg-5e916829 --subnet-id subnet-83a4ccde --region us-east-1"
         
     }
     
