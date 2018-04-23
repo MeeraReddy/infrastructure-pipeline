@@ -24,12 +24,12 @@ node('linux') {
         
         // get instance iD
         def output = sh returnStdout: true, script: 'aws ec2 describe-instances --region us-east-1 | jq .'
-        
+        echo output
        //waiter
-        sh "aws ec2 wait --region us-east-1 instance-running --instance-ids output"
+       // sh "aws ec2 wait --region us-east-1 instance-running --instance-ids output"
         
       // Terminate
-        sh "aws ec2 terminate-instances --instance-ids output"
+      //  sh "aws ec2 terminate-instances --instance-ids output"
       
     }
 }
