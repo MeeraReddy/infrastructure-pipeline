@@ -20,8 +20,16 @@ node('linux') {
         
     }
     
-    stage ("superTask") {
-
-      def output = sh returnStdout: true, script: 'aws ec2 describe-instances --region us-east-1 | jq .'
+    stage ("superTaskTerminate") {
+        
+        // get instance iD
+        def output = sh returnStdout: true, script: 'aws ec2 describe-instances --region us-east-1 | jq .'
+        
+       //waiter
+        sh "aws ec2 wait --region us-east-1 instance-running --instance-ids output"
+        
+      // Terminate
+        sh "aws ec2 terminate-instances --instance-ids output"
+      
     }
 }
