@@ -23,10 +23,10 @@ node('linux') {
     
     stage ("superTaskTerminate") {
         
-       def op = sh returnStdout: true, script: 'aws ec2 describe-instances --filters Name=vpc-id,Values=vpc-ac973bc9 --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]' --output text | sed 's/None$/None\n/' | sed '$!N;s/\n/ /''
+      // def op = sh returnStdout: true, script: 'aws ec2 describe-instances --filters Name=vpc-id,Values=vpc-ac973bc9 --query 'Reservations[].Instances[].[PrivateIpAddress,InstanceId,Tags[?Key==`Name`].Value[]]' --output text | sed 's/None$/None\n/' | sed '$!N;s/\n/ /''
         // get instance iD
-        def output = sh returnStdout: true, script: 'aws ec2 describe-instances --region us-east-1 | jq .'
-        echo output
+       // def output = sh returnStdout: true, script: 'aws ec2 describe-instances --region us-east-1 | jq .'
+       // echo output
        //waiter
        // sh "aws ec2 wait --region us-east-1 instance-running --instance-ids output"
         
